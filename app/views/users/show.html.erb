@@ -8,4 +8,13 @@
       </h1>
     </section>
   </aside>
+  <div class="col-md-8">
+    <% if @user.videos.any? %>
+      <h3>My videos (<%= @user.videos.count %>)</h3>
+      <ol class="videos">
+        <%= render @videos %>
+      </ol>
+      <%= will_paginate @videos %>
+    <% end %>
+  </div>
 </div>

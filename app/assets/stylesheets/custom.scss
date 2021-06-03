@@ -188,6 +188,31 @@ input {
     margin-top: 20px;
 }
 
+/* videos */
+
+.videos {
+    list-style: decimal;
+    padding: 0;
+    li {
+        padding: 10px 0;
+        border-top: 1px solid #e8e8e8;
+    }
+    .title {
+        margin-top: 5em;
+        padding-top: 0;
+    }
+    .description {
+        display: block;
+        margin-left: 60px;
+    }
+    .timestamp {
+        color: $gray-light;
+        display: block;
+        margin-left: 60px;
+    }
+}
+
+
 /* misc */
 
 .debug_dump {

@@ -1,0 +1,15 @@
+<li id="video-"<%= video.id %>">
+    <span class="title"><%= video.title %></span>
+    <span class="description"><%= video.description %></span>
+    <span class="pull-right">
+        <span class="btn btn-sm btn-primary">
+            <span class="glyphicon glyphicon-play" aria-hidden="true"></span>
+        </span>
+        <span class="btn btn-sm btn-primary">
+            <span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span>
+        </span>
+    </span>
+    <span class="timestamp">
+        Uploaded <%= time_ago_in_words(video.created_at) %> ago.
+    </span>
+</li>
