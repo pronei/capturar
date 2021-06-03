@@ -4,7 +4,7 @@
 <div class="row">
     <div class="col-md-6 col-md-offset-3">
         <%= form_with(model: @user, local: true) do |f| %>
-            <%= render 'shared/error_messages' %>
+            <%= render 'shared/error_messages', object: f.object %>
 
             <%= f.label :name %>
             <%= f.text_field :name, class: 'form-control' %>
@@ -16,7 +16,7 @@
             <%= f.password_field :password, class: 'form-control' %>
 
             <%= f.label :password_confirmation, 'Confirmation' %>
-            <%= f.password_field :password_confirmation class: 'form-control' %>
+            <%= f.password_field :password_confirmation, class: 'form-control' %>
 
             <%= f.submit "save changes", class: "btn btn-primary" %>
         <% end %>

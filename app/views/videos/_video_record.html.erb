@@ -1,0 +1,9 @@
+<%= form_with(model: @video, local: false) do |f| %>
+    <%= render 'shared/error_messages', object: f.object %>
+    <div class="vid-title">
+        <%= f.text_field :title, placeholder: "Enter a title" %>
+    </div>
+    <div class="field">
+        <%= f.text_area :description, placeholder: "Short description of your video" %>
+    </div>
+<% end %>
