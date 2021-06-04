@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+    include Rails.application.routes.url_helpers
     include SessionsHelper
 
     private

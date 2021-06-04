@@ -8,6 +8,8 @@ import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 
+//require("recorder.js")
+
 // jQuery and Bootstrap
 require("jquery")
 import "bootstrap"
@@ -15,3 +17,12 @@ import "bootstrap"
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
+
+import { initRecorder } from '../components/recorder.js';
+
+document.addEventListener('turbolinks:load', function() {
+    if (document.querySelector("video#gum") &&
+        document.querySelector("video#recorded")) {
+        initRecorder();
+    }
+});

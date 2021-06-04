@@ -1,6 +1,9 @@
 class UsersController < ApplicationController
   before_action :logged_in_user, only: [:index, :edit, :update, :destroy]
 
+  def index
+  end
+
   def new
     @user = User.new
   end
@@ -33,11 +36,12 @@ class UsersController < ApplicationController
     else
       render 'edit'
     end
+  end
 
   private
+
     def user_params
-      params.require(:user).permit(:name, :email, :password, 
-                                   :password_confirmation)
+      params.require(:user).permit(:name, :email, :password, :password_confirmation)
     end
-  end
+
 end

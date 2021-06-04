@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   get '/signup', to: 'users#new'
 
   resources :users
-  resources :videos, only: [:create, :destroy]
+  resources :videos, only: [:create, :destroy, :show]
 
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'

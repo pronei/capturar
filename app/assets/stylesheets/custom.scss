@@ -188,7 +188,7 @@ input {
     margin-top: 20px;
 }
 
-/* videos */
+/* video list */
 
 .videos {
     list-style: decimal;
@@ -209,6 +209,16 @@ input {
         color: $gray-light;
         display: block;
         margin-left: 60px;
+    }
+}
+
+/* video recorder */
+
+.player-pane {
+    width: 100%;
+    height: auto    !important;
+    #req-video {
+        width: auto;
     }
 }
 

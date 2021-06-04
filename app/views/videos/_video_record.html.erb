@@ -1,4 +1,4 @@
-<%= form_with(model: @video, local: false) do |f| %>
+<%= form_with(model: @video, local: false, id: "video-form") do |f| %>
     <%= render 'shared/error_messages', object: f.object %>
     <div class="vid-title">
         <%= f.text_field :title, placeholder: "Enter a title" %>
@@ -7,3 +7,28 @@
         <%= f.text_area :description, placeholder: "Short description of your video" %>
     </div>
 <% end %>
+
+    <!-- video recorder -->
+    <div class="preview-pane">
+        <h3>Preview</h3>
+
+        <button id="start" class="btn btn-primary">Start camera</button>
+        
+        <video id="gum" class="player-pane" playsinline autoplay muted></video>
+
+        <button id="record" class="btn btn-sm btn-primary">Start recording</button>
+        <button id="play" class="btn btn-sm btn-primary">Play recorded</button>
+        <button id="upload" class="btn btn-sm btn-primary">Upload</button>
+        <button id="download" class="btn btn-sm btn-primary">Download</button>
+
+        <h3>Recorded video</h3>
+
+        <video id="recorded" class="player-pane" playsinline loop></video>
+
+        <div>
+            <span id="errorMsg"></span>
+        </div>
+    </div>
+
+
+<%= javascript_include_tag "https://webrtc.github.io/adapter/adapter-latest.js" %>
