@@ -198,6 +198,7 @@ input {
         border-top: 1px solid #e8e8e8;
     }
     .title {
+        font-size: medium;
         margin-top: 5em;
         padding-top: 0;
     }
@@ -209,6 +210,10 @@ input {
         color: $gray-light;
         display: block;
         margin-left: 60px;
+    }
+    .btn {
+       margin-top: 10px;
+       margin-right: 10px;
     }
 }
 

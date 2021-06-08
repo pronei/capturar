@@ -1,14 +1,16 @@
 <li id="video-<%= video.id %>">
     <span class="title"><%= video.title %></span>
-    <span class="description"><%= video.description %></span>
-    <a class="pull-right btn btn-sm btn-primary"
+    <div class="pull-right">
+    <a class="btn btn-sm btn-primary"
        href="<%= video_path %>">
         <span class="glyphicon glyphicon-play" aria-hidden="true"></span>
     </a>
-    <a class="pull-right btn btn-sm btn-primary"
+    <a class="btn btn-sm btn-primary"
        href="<%= rails_blob_path(video.file, disposition: 'attachment') %>">
         <span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span>
     </a>
+    </div>
+    <span class="description"><%= video.description %></span>
     <span class="timestamp">
         Uploaded <%= time_ago_in_words(video.created_at) %> ago.
     </span>
