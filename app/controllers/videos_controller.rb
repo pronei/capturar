@@ -2,7 +2,7 @@ class VideosController < ApplicationController
     before_action :logged_in_user, only: [:create, :destroy]
 
     def show
-        @video = current_user.videos.find_by(params[:id])
+        @video = current_user.videos.find_by(id: params[:id])
     end
 
     def new

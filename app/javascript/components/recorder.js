@@ -2,6 +2,8 @@
 
 import Rails from "@rails/ujs";
 
+// TODO: add form select for capturing device
+
 let mediaRecorder;
 let recordedBlobs;
 let gumVideo;
@@ -10,7 +12,31 @@ const initRecorder = () => {
 
     const errorMsgElement = document.querySelector("span#errorMsg");
     const recordedVideo = document.querySelector("video#recorded");
+    const videoSelect = document.querySelector("select#videoSource");
     const videoForm = document.querySelector("form#video-form");
+
+    function gotDevices(deviceInfos) {
+        const videoValue = videoSelect.value;
+        while (videoSelect.firstChild) {
+            videoSelect.remove(videoSelect.firstChild);
+        }
+        for (let i = 0; i < deviceInfos.length; ++i) {
+            const deviceInfo = deviceInfos[i];
+            const option = document.createElement("option");
+            option.value = deviceInfo.deviceId;
+            if (deviceInfo.kind === "videoinput") {
+                option.text = deviceInfo.label || `camera ${videoSelect.length + 1}`;
+                videoSelect.appendChild(option);
+            } else {
+                console.log("Some other kind of source/device: ", deviceInfo);
+            }
+        }
+        if (Array.prototype.slice.call(videoSelect.childNodes).some(n => n.value === videoValue)) {
+            videoSelect.value = videoValue; 
+        }
+    }
+
+    navigator.mediaDevices.enumerateDevices().then(gotDevices).catch(handleError);
 
     const recordButton = document.querySelector("button#record");
     recordButton.addEventListener('click', () => {
@@ -104,6 +130,10 @@ const initRecorder = () => {
         mediaRecorder.stop();
     }
 
+    function handleError(error) {
+        console.log("navigator.MediaDevices.getUserMedia error: ", error.message, error.name);
+    }
+
     function handleSuccess(stream) {
         recordButton.disabled = false;
         console.log('getUserMedia() got stream: ', stream);
@@ -136,10 +166,17 @@ const initRecorder = () => {
     }
 
     document.querySelector("button#start").addEventListener('click', async () => {
+        if (window.stream) {
+            window.stream.getTracks().forEach(track => {
+                track.stop()
+            });
+        }
         document.querySelector("button#start").disabled = true;
+        videoSelect.disabled = true;
+        const videoSource = videoSelect.value;
         const constraints = {
             audio: true,
-            video: true
+            video: {deviceId: videoSource ? {exact: videoSource} : undefined}
         };
         console.log("Using media constraints: ", constraints);
         await startCamera(constraints);
