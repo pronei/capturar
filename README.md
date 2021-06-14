@@ -56,9 +56,10 @@ The database used for production is PostgreSQL
 1. Create a free account on Heroku. 
 2. Create a new app.
 3. Install Heroku CLI using `sudo apt install heroku-cli`
-4. Login, set the remote and push changes
+4. Login, clone, set the remote and push changes
 ```
 heroku login
+git clone https://github.com/pronei/capturar.git && cd capturar
 heroku git:remote -a <your_herokuapp_name>
 git push heroku master
 ```
