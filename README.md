@@ -5,10 +5,8 @@
 A simple web application that lets you record and store videos using a compatible camera device. Includes user signup
 and session-based login.
 
-Things you may want to cover:
-
 ## Local setup:
-The database used locally is SQLite3,
+The database used locally is SQLite3.
 
 1. Install Ruby 2.7.3 and bundler
 You may have to use RVM in case the specified version is not the default in your OS's package manager.
@@ -51,10 +49,10 @@ bin/rails server
 10. View the app site on `localhost:3000` on your web browser
 
 ## Deploy on Heroku:
-The database used for production is PostgreSQL 
+The database used for production is PostgreSQL.
 
-1. Create a free account on Heroku. 
-2. Create a new app.
+1. Create a free account on Heroku.
+2. Create a new app
 3. Install Heroku CLI using `sudo apt install heroku-cli`
 4. Login, clone, set the remote and push changes
 ```
